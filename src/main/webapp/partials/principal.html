@@ -1,0 +1,35 @@
+<div class="jumbotron">
+	<h1 class="text-center">Cadstro de Colaboradores</h1>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">Colaboradores</div>
+	<p class="alert alert-info" ng-show="message.length">
+		{{mensagem}}
+	</p>	
+	<br/>
+	<div class="row">
+		<div class="col-md-12">
+			<form>
+				<div class="input-group">
+					<span class="input-group-btn">
+						<a href="/cadastroColaborador/new" class="btn btn-primary" type="button">Novo Colaborador</a>
+					</span>
+					<input ng-model="filtro" ng-model-options="{debounce: 600}" class="form-control" placeholder="filtrar"/>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br/>
+ 	<div class="row">
+		<ul class="col-md-2 list-group text-center" ng-repeat="colaborador in colaboradores | filter: filtro">
+			<li class="list-group-item">
+				Nome: {{colaborador.nome}} <br/>
+				Idade: {{colaborador.idade}} <br/>
+				Salário: {{colaborador.salario}}
+			</li>
+			<a href="edit/{{colaborador.id}}" class="btn btn-primary btn-block">Editar</a>
+			<my-button-danger nome="Remover" acao="remover(colaborador)"> 
+			</my-button-danger>
+		</ul>
+	</div>
+</div>
